@@ -1,83 +1,55 @@
-
 (function () {
-  // Inject favicon into <head> for all pages
-  const link = document.createElement('link');
-  link.rel  = 'icon';
-  link.type = 'image/svg+xml';
-  link.href = 'favicon.svg';
-  document.head.appendChild(link);
+  const favicon = document.createElement('link');
+  favicon.rel = 'icon'; favicon.type = 'image/svg+xml'; favicon.href = 'favicon.svg';
+  document.head.appendChild(favicon);
 
-  // Determine which page is current to set the active nav link
   const page = window.location.pathname.split('/').pop() || 'index.html';
-  const isHome = (page === 'index.html' || page === '');
-
   const pages = [
-    { href: 'index.html',     label: 'Home' },
-    { href: 'research.html',  label: 'Research' },
-    { href: 'projects.html',  label: 'Projects' },
-    { href: 'bookshelf.html', label: 'Bookshelf' },
-    { href: 'contact.html',   label: 'Contact' },
+    { href: 'index.html', label: 'Main' },
+    { href: 'research.html', label: 'Papers' },
+    { href: 'code.html', label: 'Code' },
+    { href: 'writing.html', label: 'Writing' },
+    { href: 'cv.html', label: 'Cv' }
   ];
+  const links = pages.map(({ href, label }) => {
+    const active = page === href || (page === '' && href === 'index.html');
+    return `<a href="${href}"${active ? ' class="active" aria-current="page"' : ''}>${label}</a>`;
+  }).join('');
 
-  const navLinks = pages
-    .map(p => {
-      const active = (page === p.href || (page === '' && p.href === 'index.html'))
-        ? ' class="active"'
-        : '';
-      return `<a href="${p.href}"${active}>${p.label}</a>`;
-    })
-    .join('\n      ');
+  const header = `<header class="site-header"><div class="site-header-inner"><a href="index.html" class="masthead-name"><em>Suraj</em> Yadav</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span><span></span><span class="sr-only">Toggle navigation</span></button><nav class="site-nav" id="primary-nav" aria-label="Primary navigation">${links}</nav></div></header>`;
+  (document.querySelector('.page') || document.body).insertAdjacentHTML('afterbegin', header);
 
-  // Only show the semester/meta line and portrait on the home page
-  const metaLine = isHome
-    ? `<div class="masthead-meta">
-          Semester VI <span class="ornament">§</span> 2026&ensp;·&ensp;New Delhi, India&ensp;·&ensp;Updated July 2026
-        </div>`
-    : '';
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
+  const closeMenu = () => {
+    toggle.setAttribute('aria-expanded', 'false');
+    nav.classList.remove('is-open');
+  };
 
-  const portrait = isHome
-    ? `<div class="portrait-wrap">
-        <div class="portrait-box">
-          <img src="image.png" alt="Siddharth Yadav" />
-        </div>
-      </div>`
-    : '';
+  toggle.addEventListener('click', function () {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    nav.classList.toggle('is-open', !open);
+  });
+  nav.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeMenu();
+  });
 
-  const headerHTML = `
-  <hr class="top-rule" />
-  <hr class="top-rule-thin" />
-
-  <!-- SITE HEADER -->
-  <header class="site-header">
-    <div class="site-header-inner">
-      <div>
-        <a href="index.html" class="masthead-name"><em>Siddharth</em> Yadav</a>
-        <div class="masthead-tagline">B.Tech. CSE + Mathematics <span class="ornament">·</span> IIIT Delhi</div>
-        ${metaLine}
-      </div>
-      ${portrait}
-    </div>
-
-    <nav class="site-nav">
-      ${navLinks}
-    </nav>
-  </header>`;
-
-  // Insert the header before the first child of .page (or at the top of body)
-  const page_div = document.querySelector('.page') || document.body;
-  page_div.insertAdjacentHTML('afterbegin', headerHTML);
-
-  // --- FOOTER ---
-  // Must wait for full DOM parse so 'beforeend' lands after <main>, not mid-page.
   document.addEventListener('DOMContentLoaded', function () {
-    const footerHTML = `
-  <footer class="site-footer">
-    <span>Siddharth Yadav <span class="ornament">¶</span> New Delhi, 2026</span>
-    <span class="footer-ornament">❧</span>
-    <span>Built with type &amp; care</span>
-  </footer>`;
+    const footer = `<footer class="site-footer"><span>© ${new Date().getFullYear()} Suraj Yadav</span><span class="footer-ornament">·</span><a href="contact.html">Contact</a></footer>`;
+    (document.querySelector('.page') || document.body).insertAdjacentHTML('beforeend', footer);
 
-    const container = document.querySelector('.page') || document.body;
-    container.insertAdjacentHTML('beforeend', footerHTML);
+    document.querySelectorAll('.paper-abstract').forEach(details => {
+      const summary = details.querySelector('summary');
+      const label = summary.querySelector('.sr-only');
+      const updateLabel = () => {
+        const text = details.open ? 'Collapse abstract' : 'Expand abstract';
+        summary.title = text;
+        label.textContent = text;
+      };
+      details.addEventListener('toggle', updateLabel);
+      updateLabel();
+    });
   });
 })();

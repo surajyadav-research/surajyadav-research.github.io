@@ -1,60 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Research — Siddharth Yadav</title>
+  <meta name="description" content="Papers and research interests of Suraj Yadav." />
+  <title>Papers | Suraj Yadav</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <div class="page">
-
   <script src="header.js"></script>
-
   <main>
+    <section class="section">
+      <div class="section-label">Papers</div>
+      <nav class="year-index" aria-label="Publications by year">
+        <span>By year</span>
+        <a href="#2026">2026</a>
+      </nav>
 
-    <!-- Research Statement -->
-    <section class="section anim-1">
-      <div class="section-label">§ 1 — Research</div>
-      <div class="prose drop-cap">
-        <p>My research sits across machine learning, computer vision, and robotics - three areas that are increasingly difficult, and increasingly unproductive, to treat as separate. I am interested in how models represent and reason about the world, visually, linguistically, and physically, and in where those representations break down.</p>
-        <p>I have a deep fascination with reinforcement learning - not just as a training method, but as a framework for thinking about how models learn to reason and act. That thread runs through most of what I work on.</p>
-      </div>
-    </section>
+      <div class="publication-year" id="2026">
+        <h2>2026</h2>
 
-    <!-- Publications -->
-    <section class="section anim-2" id="publications">
-      <div class="section-label">§ 2 — Publications</div>
-
-      <ul class="paper-list">
-        <li>
-          <span class="paper-year">2026</span>
-          <div>
-            <div class="paper-title"><a href="https://generative-vision.github.io/workshop-CVPR-26/papers/23.pdf">Breaking Spurious Correlations via Generative Randomization and Cross-Variant Self-Supervised Learning</a></div>
-            <div class="paper-meta">CVPR Workshop on Generative Vision, 2026 &nbsp;·&nbsp; Suraj Yadav, Anjaneya Sharma*, <em>Siddharth Yadav*</em> &nbsp;·&nbsp; <a href="https://generative-vision.github.io/workshop-CVPR-26/" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule);">Website</a> &nbsp;·&nbsp; <a href="https://generative-vision.github.io/workshop-CVPR-26/papers/23.pdf" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule);">PDF</a></div>
+        <article class="publication-entry">
+          <h3><a href="https://arxiv.org/abs/2607.05850" target="_blank" rel="noopener noreferrer">Breaking Spurious Correlations via Generative Randomization and Cross-Variant Self-Supervised Learning</a></h3>
+          <p class="publication-venue">CVPR Workshop on Generative Models for Computer Vision (GCV), 2026</p>
+          <p class="publication-authors"><strong>Suraj Yadav</strong>, Anjaneya Sharma, Siddharth Yadav</p>
+          <details class="paper-abstract">
+            <summary title="Expand abstract"><span class="sr-only">Expand abstract</span></summary>
+            <div class="paper-abstract-content">
+              <h4>Abstract</h4>
+              <p>Deep neural networks trained with Empirical Risk Minimization (ERM) often fail under distribution shifts because they exploit spurious correlations between object labels and background context. Recent generative approaches address this issue by creating counterfactual images with altered contexts, but typically use these samples as standard data augmentation, leaving the model free to retain background-sensitive representations. We propose a two-stage framework that uses generative intervention to explicitly learn background-invariant visual representations. First, we isolate the foreground object using zero-shot segmentation and generate context-shifted variants with a structure-preserving diffusion model, preserving object identity while varying the surrounding environment. We then introduce Cross-Variant Self-Supervised Learning, where variants of the same object under different backgrounds form positive pairs in a contrastive objective. This encourages the encoder to align object-centric representations while suppressing background-specific cues. Then, we fine-tune the pretrained encoder using an ERM warm-up followed by GroupDRO with layer-wise learning rates. Experiments on distribution-shift benchmarks demonstrate best worst-group performance, achieving 92.5% on Waterbirds, 81.7% on MetaShift, and 87.4% on NICO++.</p>
+            </div>
+          </details>
+          <div class="entry-links">
+            <a class="primary-paper-link" href="https://arxiv.org/abs/2607.05850" target="_blank" rel="noopener noreferrer">Read full paper →</a>
+            <a href="https://arxiv.org/abs/2607.05850" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+            <a href="https://generative-vision.github.io/workshop-CVPR-26/papers/23.pdf" target="_blank" rel="noopener noreferrer">PDF ↗</a>
+            <a href="https://generative-vision.github.io/workshop-CVPR-26/" target="_blank" rel="noopener noreferrer">Workshop ↗</a>
+            <a href="https://github.com/surajyadav-research/GRSSL" target="_blank" rel="noopener noreferrer">Code ↗</a>
           </div>
-        </li>
-        <li>
-          <span class="paper-year">2026</span>
-          <div>
-            <div class="paper-title"><a href="https://openreview.net/forum?id=765Ncc3tQe&referrer=%5Bthe%20profile%20of%20Siddharth%20Yadav%5D(%2Fprofile%3Fid%3D~Siddharth_Yadav1)">Limits of Difficulty Scaling: Hard Samples Yield Diminishing Returns in GRPO-Tuned SLMs</a></div>
-            <div class="paper-meta">ICBINB Workshop ICLR, 2026 &nbsp;·&nbsp; Suraj Yadav, <em>Siddharth Yadav*</em>, Parth Goyal* &nbsp;·&nbsp; <a href="https://openreview.net/forum?id=765Ncc3tQe&referrer=%5Bthe%20profile%20of%20Siddharth%20Yadav%5D(%2Fprofile%3Fid%3D~Siddharth_Yadav1)" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule);">OpenReview</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2604.06298" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule);">arXiv</a> &nbsp;·&nbsp; <a href="https://arxiv.org/pdf/2604.06298" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule);">PDF</a></div>
+        </article>
+
+        <article class="publication-entry">
+          <h3><a href="https://arxiv.org/abs/2604.06298" target="_blank" rel="noopener noreferrer">Limits of Difficulty Scaling: Hard Samples Yield Diminishing Returns in GRPO-Tuned SLMs</a></h3>
+          <p class="publication-venue">ICLR Workshop: I Can't Believe It's Not Better (ICBINB), 2026</p>
+          <p class="publication-authors"><strong>Suraj Yadav</strong>, Siddharth Yadav, Parth Goyal</p>
+          <details class="paper-abstract">
+            <summary title="Expand abstract"><span class="sr-only">Expand abstract</span></summary>
+            <div class="paper-abstract-content">
+              <h4>Abstract</h4>
+              <p>Recent alignment work on Large Language Models (LLMs) suggests preference optimization can improve reasoning by shifting probability mass toward better solutions. We test this claim in a resource-constrained setting by applying GRPO with LoRA to SLMs (up to 3B) for math reasoning on GSM8K and MATH datasets with difficulty-stratified analyses. As problem difficulty increases, accuracy plateaus, revealing a capacity boundary: GRPO primarily reshapes output preferences without reliably improving hardest-tier solving. Consistent with this, training GRPO only on lower-difficulty problems matches full-dataset accuracy across difficulty tiers while using only ~45% training steps, indicating diminishing returns from harder samples in this regime. We also find a cross-dataset generalization effect: GSM8K-trained GRPO achieves higher accuracy on the numeric subset of MATH than MATH-trained GRPO, exceeding it by ~5% at 1.5B and by ~3% at 3B. We show that the best achievable gains depend strongly on the base model's prior reasoning competence and the dataset's difficulty profile.</p>
+            </div>
+          </details>
+          <div class="entry-links">
+            <a class="primary-paper-link" href="https://arxiv.org/abs/2604.06298" target="_blank" rel="noopener noreferrer">Read full paper →</a>
+            <a href="https://arxiv.org/abs/2604.06298" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+            <a href="https://arxiv.org/pdf/2604.06298" target="_blank" rel="noopener noreferrer">PDF ↗</a>
+            <a href="https://openreview.net/forum?id=765Ncc3tQe" target="_blank" rel="noopener noreferrer">OpenReview ↗</a>
           </div>
-        </li>
-      </ul>
-
-      <p style="margin-top:1.4rem; font-size:0.88rem; color:var(--ink-muted); font-style:italic;">
-        More work currently in progress across three active projects - updates here when ready.
-      </p>
-
-      <div style="margin-top:1.4rem;">
-        <a href="https://scholar.google.com/citations?user=ma1PLdUAAAAJ" class="text-link text-link-accent">→ Google Scholar</a>
+        </article>
       </div>
-    </section>
 
+      <p class="scholar-link">View the current publication record on <a href="https://scholar.google.com/citations?user=UGjOBC4AAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>.</p>
+    </section>
   </main>
-
-
 </div>
 </body>
 </html>

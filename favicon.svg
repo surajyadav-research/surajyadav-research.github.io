@@ -1,7 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Background: site cream #f5f0e8 -->
   <rect width="64" height="64" fill="#f5f0e8"/>
-  <!-- Cursive italic S: site accent #8b4513, Cormorant Garamond / Georgia serif italic -->
   <text
     x="32"
     y="50"
