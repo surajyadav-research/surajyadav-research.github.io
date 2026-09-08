@@ -5,9 +5,8 @@
 
   const page = window.location.pathname.split('/').pop() || 'index.html';
   const pages = [
-    { href: 'index.html', label: 'Main' },
+    { href: 'index.html', label: 'About' },
     { href: 'research.html', label: 'Papers' },
-    { href: 'code.html', label: 'Code' },
     { href: 'writing.html', label: 'Writing' },
     { href: 'cv.html', label: 'Cv' }
   ];
